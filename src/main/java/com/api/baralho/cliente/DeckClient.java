@@ -1,8 +1,12 @@
 package com.api.baralho.cliente;
 
+import java.util.List;
+
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.api.baralho.models.BaralhoModel;
 
 
 @FeignClient(
@@ -11,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 		)
 public interface DeckClient {
 	
-	@RequestMapping(value = "/api/deck/new/shuffle/?deck_count=1", method = RequestMethod.GET)
-	String obterBaralho();
+	@GetMapping(value = "/api/deck/new/draw/?count=5")
+	List<BaralhoModel> embaralhar();
+
+	//@GetMapping(value = "/api/deck/{deck_id}/draw/?count=5")
+	//BaralhoModel tirarCartas(@PathVariable("deck_id") String deck_id);
+	
 }

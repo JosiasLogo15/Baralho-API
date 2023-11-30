@@ -11,25 +11,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
 @Getter
 @Setter
 @Entity
-@Table(name = "baralho")
-public class BaralhoModel {
-	
+@Table(name = "imagens")
+public class ImagesModel {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private Boolean success;
-	private String deck_id;
-	private Boolean shuffled;
-	private CartaModelo cards;
-	private Integer remaining;
-	
-	
-	
+	private String svg;
+	private String png;
 }
