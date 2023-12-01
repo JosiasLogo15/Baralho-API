@@ -1,5 +1,7 @@
 package com.api.baralho.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,8 +21,16 @@ import lombok.Setter;
 @Entity
 @Table(name = "imagens")
 public class ImagesModel {
+	
+	@JsonIgnore
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String svg;
 	private String png;
+	
+	public ImagesModel(String svg, String png) {
+		super();
+		this.svg = svg;
+		this.png = png;
+	}
 }
