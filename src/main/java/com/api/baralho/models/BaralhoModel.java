@@ -35,14 +35,27 @@ public class BaralhoModel {
 	private String deck_id;
 	
 	@OneToMany(mappedBy = "baralho", cascade = CascadeType.ALL)
-	private List<CartaModelo> cards;
+	private List<CartaModel> cards;
 	private Integer remaining;
 	
+	private Boolean shuffled;
 	
-	public BaralhoModel(Boolean success, String deckId, List<CartaModelo> cards, Integer remaining) {
+	public BaralhoModel(Boolean success, String deckId, List<CartaModel> cards, Integer remaining) {
 		this.success = success;
 		this.deck_id = deckId;
 		this.cards = cards;
+		this.remaining = remaining;
+	}
+	public BaralhoModel(Boolean success, String deckId, List<CartaModel> cards) {
+		this.success = success;
+		this.deck_id = deckId;
+		this.cards = cards;
+	}
+	
+	public BaralhoModel(Boolean success, String deckId, Boolean shuffled, Integer remaining) {
+		this.success = success;
+		this.deck_id = deckId;
+		this.shuffled = shuffled;
 		this.remaining = remaining;
 	}
 		

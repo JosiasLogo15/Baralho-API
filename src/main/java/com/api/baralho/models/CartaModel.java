@@ -2,6 +2,7 @@ package com.api.baralho.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,12 +20,13 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "carta")
+@Nonnull
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
 @Getter
 @Setter
-public class CartaModelo {
+public class CartaModel {
 	
 	@JsonIgnore
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,6 +39,11 @@ public class CartaModelo {
 	@JoinColumn(name = "baralho_id")
 	private BaralhoModel baralho;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "jogador_id")
+	private JogadorModel jogador;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "imagens_id")
 	private ImagesModel images;
@@ -44,7 +51,7 @@ public class CartaModelo {
 	private String value;
 	private String suit;
 	
-	public CartaModelo(String code, String image, ImagesModel images, String value, String suit) {
+	public CartaModel(String code, String image, ImagesModel images, String value, String suit) {
 		super();
 		this.code = code;
 		this.image = image;
